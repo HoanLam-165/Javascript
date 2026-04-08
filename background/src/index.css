@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+}
+
+/* ===== BACKGROUND ===== */
+.background {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out;
+  z-index: -2;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: -1;
+}
+
+/* ===== BUTTON ===== */
+.selector {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===== PARTICLE ===== */
+.particle-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  top: -50px;
+  pointer-events: none;
+  object-fit: contain;
+  user-select: none;
+  animation: fall linear forwards;
+}
+
+/* tuyết tròn */
+.snow-dot {
+  background: radial-gradient(circle, white 40%, rgba(255, 255, 255, 0.3));
+  border-radius: 50%;
+  filter: blur(1px);
+  animation-timing-function: ease-in;
+}
+
+.snow-dot:nth-child(2n) {
+  opacity: 0.5;
+  filter: blur(2px);
+}
+
+.snow-dot:nth-child(3n) {
+  opacity: 0.3;
+  filter: blur(3px);
+}
+/* ===== ANIMATION CHUNG ===== */
+@keyframes fall {
+  from {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(120vh) translateX(var(--drift)) rotate(360deg);
+  }
+}
+/* ===== ☀️ SUMMER ===== */
+.sunlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle at 80% 20%,
+    rgba(255, 255, 200, 0.45),
+    rgba(255, 255, 150, 0.25) 30%,
+    transparent 60%
+  );
+
+  filter: blur(20px);
+  opacity: 0.8;
+}
+
+.sunlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at 70% 10%,
+    rgba(255, 255, 255, 0.2),
+    transparent 50%
+  );
+
+  filter: blur(40px);
+}
